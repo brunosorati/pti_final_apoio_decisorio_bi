@@ -1,1 +1,2 @@
-# pti_final_apoio_decisorio_bi
+Códificação sobre o PROJETO INTEGRADOR: APOIO DECISÓRIO AOS NEGÓCIOS.
+5º Semestre - Tecnologia em Banco de Dados - Senac SP.
