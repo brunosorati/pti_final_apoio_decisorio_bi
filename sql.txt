@@ -1,0 +1,49 @@
+
+CREATE TABLE TABELA_CLIENTE (
+                id_pessoal INT NOT NULL,
+                nome VARCHAR(200) NOT NULL,
+                CPF VARCHAR(15) NOT NULL,
+                endereco VARCHAR(200) NOT NULL,
+                sexo VARCHAR(1) NOT NULL,
+                hobby VARCHAR(200) NOT NULL,
+                idade INT NOT NULL,
+                CONSTRAINT TABELA_CLIENTE_pk PRIMARY KEY (id_pessoal)
+)
+
+CREATE TABLE TABELA_FATO (
+                id INT IDENTITY NOT NULL,
+                Id_pessoal INT NOT NULL,
+                dia INT NOT NULL,
+                mes INT NOT NULL,
+                ano INT NOT NULL,
+                bairro VARCHAR(200) NOT NULL,
+                cidade VARCHAR(200) NOT NULL,
+                estado VARCHAR(200) NOT NULL,
+                arquivo_origem VARCHAR(200) NOT NULL,
+                tempo_de_Utilizao_em_Minutos INT NOT NULL,
+                CONSTRAINT TABELA_FATO_pk PRIMARY KEY (id)
+)
+
+ALTER TABLE TABELA_FATO ADD CONSTRAINT TABELA_CLIENTE_TABELA_FATO_fk
+FOREIGN KEY (Id_pessoal)
+REFERENCES TABELA_CLIENTE (id_pessoal)
+ON DELETE NO ACTION
+ON UPDATE NO ACTION
+
+
+
+SELECT f.id_pessoal as ID_PESSOAL,
+f.dia as DIA,
+f.mes as MÊS,
+f.Ano as ANO,
+f.bairro as BAIRRO,
+f.cidade as CIDADE,
+f.estado as ESTADO,
+f.arquivo_origem as ORIGEM_DO_ARQUIVO,
+f.tempo_uso_minutos as TEMPO_DE_USO_EM_MINUTOS,
+c.nome as NOME,
+c.CPF as CPF,
+c.endereco as ENDEREÇO,
+c.sexo as SEXO,
+c.hobby as HOBBY,
+c.idade as IDADE from TABELA_FATO f inner join TABELA_CLIENTE c on f.id_pessoal = c.id_pessoal 
